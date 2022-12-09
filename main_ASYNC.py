@@ -296,6 +296,78 @@ async def get_page_data(session, dir_name_2, id_, id__, name__):
 
         xxx = json.loads(response_text)
 
+        items__ = []
+
+        for i in xxx:
+
+            items__.append(
+                {
+                    "PLACING": i['officialPosition'],
+                    "BACK#": i['backNumber'],
+                    "HORSE": i['horseName'],
+                    "RIDER": i['riderName'],
+                    "OWNER": i['ownerName'],
+                    "SCORE": i['totalScore'],
+                    "GREEN": i['greenPoints'],
+                    "YOUTH": i['point'],
+                    "EARNINGS(USD)": i['earnings']
+                }
+            )
+
+            #
+            # bool_green = False
+            # bool_youth = False
+            #
+            # try:
+            #     green_ = i['greenPoints']
+            #     bool_green = True
+            # except:
+            #     try:
+            #         youth_ = i['point']
+            #         bool_youth = True
+            #     except:
+            #         pass
+            #
+            # if bool_green == True:
+            #     items__.append(
+            #         {
+            #             "PLACING": i['officialPosition'],
+            #             "BACK#": i['backNumber'],
+            #             "HORSE": i['horseName'],
+            #             "RIDER": i['riderName'],
+            #             "OWNER": i['ownerName'],
+            #             "SCORE": i['totalScore'],
+            #             "GREEN": green_,
+            #             "EARNINGS(USD)": i['earnings']
+            #         }
+            #     )
+            # elif bool_youth == True:
+            #     items__.append(
+            #         {
+            #             "PLACING": i['officialPosition'],
+            #             "BACK#": i['backNumber'],
+            #             "HORSE": i['horseName'],
+            #             "RIDER": i['riderName'],
+            #             "OWNER": i['ownerName'],
+            #             "SCORE": i['totalScore'],
+            #             "YOUTH": youth_,
+            #             "EARNINGS(USD)": i['earnings']
+            #         }
+            #     )
+            # else:
+            #     items__.append(
+            #         {
+            #             "PLACING": i['officialPosition'],
+            #             "BACK#": i['backNumber'],
+            #             "HORSE": i['horseName'],
+            #             "RIDER": i['riderName'],
+            #             "OWNER": i['ownerName'],
+            #             "SCORE": i['totalScore'],
+            #             "NONE": 'NONE',
+            #             "EARNINGS(USD)": i['earnings']
+            #         }
+            #     )
+
         file_name__ = f'{name__}' \
             .replace("#", "") \
             .replace(" ", "") \
@@ -309,7 +381,7 @@ async def get_page_data(session, dir_name_2, id_, id__, name__):
         print(f'\t{id__} ---> {name__}')
 
         with open(fff, 'w', encoding='utf-8') as file:
-            json.dump(xxx, file, indent=4, ensure_ascii=False)
+            json.dump(items__, file, indent=4, ensure_ascii=False)
 
 
 def main(m, y):
