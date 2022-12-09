@@ -331,6 +331,24 @@ def pars_(month, year):
 
                 xxx = json.loads(response.text)
 
+                items__ = []
+
+                for i in xxx:
+
+                    items__.append(
+                        {
+                            "PLACING": i['officialPosition'],
+                            "BACK#": i['backNumber'],
+                            "HORSE": i['horseName'],
+                            "RIDER": i['riderName'],
+                            "OWNER": i['ownerName'],
+                            "SCORE": i['totalScore'],
+                            "GREEN": i['greenPoints'],
+                            "YOUTH": i['point'],
+                            "EARNINGS(USD)": i['earnings']
+                        }
+                    )
+
                 file_name__ = f'{name__}' \
                     .replace("#", "") \
                     .replace(" ", "") \
@@ -340,7 +358,7 @@ def pars_(month, year):
                     .replace("*", "")
 
                 with open(f'{dir_name_2}/{id_}_{id__}_{file_name__}.json', 'w', encoding='utf-8') as file:
-                    json.dump(xxx, file, indent=4, ensure_ascii=False)
+                    json.dump(items__, file, indent=4, ensure_ascii=False)
 
 
             print(f'\n===================================================================================\n')
