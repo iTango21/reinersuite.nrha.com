@@ -369,6 +369,7 @@ async def get_page_data(session, dir_name_2, id_, id__, name__):
             #     )
 
         file_name__ = f'{name__}' \
+            .replace("?", "") \
             .replace("#", "") \
             .replace(" ", "") \
             .replace("\\", "") \

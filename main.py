@@ -333,23 +333,33 @@ def pars_(month, year):
 
                 items__ = []
 
-                for i in xxx:
+                for item in xxx:
+                    # placing_ = item['officialPosition']
+                    # back_ = item['backNumber']
+                    # horse_ = item['horseName']
+                    # rider_ = item['riderName']
+                    # owner_ = item['ownerName']
+                    # score_ = item['totalScore']
+                    # green_ = item['greenPoints']
+                    # youth_ = item['point']
+                    # earnings_ = item['earnings']
 
                     items__.append(
                         {
-                            "PLACING": i['officialPosition'],
-                            "BACK#": i['backNumber'],
-                            "HORSE": i['horseName'],
-                            "RIDER": i['riderName'],
-                            "OWNER": i['ownerName'],
-                            "SCORE": i['totalScore'],
-                            "GREEN": i['greenPoints'],
-                            "YOUTH": i['point'],
-                            "EARNINGS(USD)": i['earnings']
+                            "PLACING": item['officialPosition'],
+                            "BACK#": item['backNumber'],
+                            "HORSE": item['horseName'],
+                            "RIDER": item['riderName'],
+                            "OWNER": item['ownerName'],
+                            "SCORE": item['totalScore'],
+                            "GREEN": item['greenPoints'],
+                            "YOUTH": item['point'],
+                            "EARNINGS(USD)": item['earnings']
                         }
                     )
 
                 file_name__ = f'{name__}' \
+                    .replace("?", "") \
                     .replace("#", "") \
                     .replace(" ", "") \
                     .replace("\\", "") \
